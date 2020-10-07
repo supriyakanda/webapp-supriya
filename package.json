@@ -1,7 +1,8 @@
 {
   "name": "webapp-supriya",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "private": true,
+  "github": "https://github.com/supriyakanda/webapp-supriya",
   "scripts": {
     "start": "node ./bin/www"
   },
@@ -12,5 +13,8 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
   }
 }
