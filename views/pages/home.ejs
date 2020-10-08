@@ -1,24 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include('../partials/head'); %>
-</head>
-<body class="container">
+<%- include('../partials/head')-%>
 
-<header>
-    <%- include('../partials/header'); %>
-</header>
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <%- include('../partials/header')-%>
 
-<main>
-    <div class="jumbotron">
-        <h1>This is great</h1>
-        <p>Welcome to templating using EJS</p>
+
+        <section id="contact">
+            <div class="container">
+                <h3 class="text-center text-uppercase">Welcome to my home</h3>
+                <p class="text-center w-75 m-auto">                                           “Curiosity Leads to Questions, I work to find Solutions”</p>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 my-5">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <h4 class="text-uppercase mb-5">More About Me</h4>
+                                <p class="lead">
+                                    <a href="/about" class="btn btn-lg btn-secondary">Click Here</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 my-5">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <h4 class="text-uppercase mb-5">My Accomplishments </h4>
+                                <p class="lead">
+                                    <a href="/projects" class="btn btn-lg btn-secondary">Click Here</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('../partials/footer')-%>
     </div>
-</main>
-
-<footer>
-    <%- include('../partials/footer'); %>
-</footer>
-
 </body>
+<script>
+    window.onload = function() {
+        document.getElementById('home').classList.add('active');
+      };
+</script>
 </html>

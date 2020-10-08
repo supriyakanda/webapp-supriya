@@ -1,29 +1,73 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include('../partials/head'); %>
-</head>
-<body class="container">
+<%- include('../partials/head')-%>
 
-<header>
-    <%- include('../partials/header'); %>
-</header>
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <%- include('../partials/header')-%>
+        <section id="contact">
+            <div class="container">
+                <h3 class="text-center text-uppercase">Services</h3>
+                <p class="text-center w-75 m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+                    interdum purus at sem ornare sodales.</p>
 
-<main>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="jumbotron">
-            <h1>This is great</h1>
-            <p>Welcome to templating using EJS Services</p>
-        </div>
+                <div class="row">
+                    <div class="row">
+                        <div class="col-md-4 text-center pad20">
+                            <div class="box card border-0">
+                                <div class="box-content">
+                                    <h4 class="tag-title">Web Development</h4>
+                                    <hr />
+                                    <p class="disclosure">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                                        pharetra quam
+                                        sollicitudin nibh aliquam finibus. Etiam efficitur felis vel imperdiet
+                                        varius.</p>
+
+                                    <img class="serivices-pics" src="images/web-development.png" class="img-rounded"
+                                        alt="Cinque Terre">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center pad20">
+                            <div class="box card border-0">
+                                <div class="box-content">
+                                    <h4 class="tag-title">Web Designing</h4>
+                                    <hr />
+                                    <p class="disclosure">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                                        pharetra quam
+                                        sollicitudin nibh aliquam finibus. Etiam efficitur felis vel imperdiet
+                                        varius.</p>
+
+                                    <img class="serivices-pics" src="images/web-design.png" class="img-rounded"
+                                        alt="Cinque Terre">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4 text-center pad20">
+                            <div class="box card border-0">
+                                <div class="box-content">
+                                    <h4 class="tag-title">Mobile Application</h4>
+                                    <hr />
+                                    <p class="disclosure">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
+                                        pharetra quam
+                                        sollicitudin nibh aliquam finibus. Etiam efficitur felis vel imperdiet
+                                        varius.</p>
+
+                                    <img class="serivices-pics" src="images/mobile-apps.png" class="img-rounded"
+                                        alt="Cinque Terre">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+        </section>
+        <%- include('../partials/footer')-%>
     </div>
-
-</div>
-</main>
-
-<footer>
-    <%- include('../partials/footer'); %>
-</footer>
-
 </body>
+<script>
+    window.onload = function () {
+        document.getElementById('services').classList.add('active');
+    };
+</script>
+
 </html>

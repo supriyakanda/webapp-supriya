@@ -1,29 +1,95 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include('../partials/head'); %>
-</head>
-<body class="container">
+<%- include('../partials/head')-%>
 
-<header>
-    <%- include('../partials/header'); %>
-</header>
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <%- include('../partials/header')-%>
+        <section id="contact">
+            <div class="container">
+                <h3 class="text-center text-uppercase">Projects</h3>
+                <p class="text-center w-75 m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+                    interdum purus at sem ornare sodales.</p>
+                <div class="row jumbotron">
+                    <div class="col-sm-8">
+                        <div>
+                            <div class="inner cover">
+                                <h3 class="cover-heading">1.Ticket Reservation System web application</h3>
+                                <p class="lead"> My role in the project was Manual Tester.
 
-<main>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="jumbotron">
-            <h1>This is great</h1>
-            <p>Welcome to templating using EJS My projects</p>
-        </div>
+                                </p>
+                                <p class="lead">
+                                    I was responsible for preparing test requirements document and testing the
+                                    functionalities
+                                    involving the following modules of the web application Account creation, Login, and
+                                    password.
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div>
+                            <img class="my-photo" src="images/project1.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                <!-- Project 2 -->
+                <div class="row jumbotron">
+
+                    <div class="col-sm-4">
+                        <div>
+                            <img class="my-photo" src="images/project2.png" alt="">
+                        </div>
+                    </div>
+
+                    <div class="col-sm-8">
+                        <div>
+                            <div class="inner cover">
+                                <h3 class="cover-heading">2: Quiz me Application</h3>
+                                <p class="lead">My role in the project as project coordinator. The application Quiz ME
+                                    deals
+                                    with a subscription-based quiz. responsible for creating the context and data flow
+                                    diagrams
+                                    of the application and Use case diagrams for each subsystem which involves quiz
+                                    creation,
+                                    Results and Payments.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- project 3 -->
+                <div class="row jumbotron">
+                    <div class="col-sm-8">
+                        <div>
+                            <div class="inner cover">
+                                <h3 class="cover-heading">3. Snake Game </h3>
+                                <p class="lead">My role was to write code using python language. It is a game and my
+                                    segment
+                                    in
+                                    the project is to display the score of the game. For this I have used functions and
+                                    for
+                                    and
+                                    while loops and if-else statements.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div>
+                            <img class="my-photo project-img" src="images/project3.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <%- include('../partials/footer')-%>
     </div>
-
-</div>
-</main>
-
-<footer>
-    <%- include('../partials/footer'); %>
-</footer>
-
 </body>
+<script>
+    window.onload = function () {
+        document.getElementById('projects').classList.add('active');
+    };
+</script>
+
 </html>

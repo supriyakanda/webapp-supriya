@@ -1,8 +1,68 @@
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.container {
+  padding: 10px;
+}
+
+.logo {
+  position: absolute;
+  height: 100px;
+  margin: -50px 20px 10px -1px;
+}
+.custom-nav {
+  height: 80px;
+}
+.custom-nav ul {
+  margin-left: 100px;
+}
+.project-img {
+  width:320px !important
+}
+
+.bd-placeholder-img {
+  font-size: 1.125rem;
+  /* text-anchor: middle; */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+@media (min-width: 768px) {
+  .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+  }
+}
+
+.my-photo {
+  border-radius: .3rem;
+}
+
+.aboutme-photo{
+  width:200px;
+  width:200px;
+  border-radius: 20rem;
+}
+
+.contact-form{
+  width: 50%;
+  margin: auto;
+}
+
+
+.pad20{
+  padding: 20px;
+}
+.serivices-pics{
+  border-radius: .3rem;
+  margin-bottom: 20px;
+  width:250px;
+  width:250px;
 }

@@ -4,7 +4,8 @@
   "private": true,
   "github": "https://github.com/supriyakanda/webapp-supriya",
   "scripts": {
-    "start": "node ./bin/www"
+    "serve-dev": "echo '=> Installing node_module and Running app...' && npm install && node ./bin/www",
+    "start": "npm run serve-dev"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",

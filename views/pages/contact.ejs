@@ -1,29 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include('../partials/head'); %>
-</head>
-<body class="container">
+<%- include('../partials/head')-%>
 
-<header>
-    <%- include('../partials/header'); %>
-</header>
-
-<main>
-<div class="row">
-    <div class="col-sm-12">
-        <div class="jumbotron">
-            <h1>This is great</h1>
-            <p>Welcome to templating using EJS Contact Me</p>
-        </div>
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <%- include('../partials/header')-%>
+        <section id="contact">
+            <div class="container">
+                <h3 class="text-center text-uppercase">Contact Me</h3>
+                <p class="text-center w-75 m-auto">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris
+                    interdum purus at sem ornare sodales.</p>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-4 my-5">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <i class="fa fa-user fa-5x mb-3" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-5">Name</h4>
+                                <p>Supriya Kanda</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 my-5">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <i class="fa fa-phone fa-5x mb-3" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-5">Call me</h4>
+                                <p>+6474702591</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-4 my-5">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <i class="fa fa-globe fa-5x mb-3" aria-hidden="true"></i>
+                                <h4 class="text-uppercase mb-5">Email</h4>
+                                <p>kandasupriya@gmail.com</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="contact-form">
+            <div class="container">
+                <form method="POST" action="/form">
+                    <div class="form-group">
+                        <label for="Name">First Name</label>
+                        <input type="text" class="form-control" id="name" name="name" placeholder="Enter First Name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="Surname">Last Name</label>
+                        <input type="text" class="form-control" id="surname" name="surname"
+                            placeholder="Enter Last Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Enter Email"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea class="form-control" id="message" name="message" rows="4" cols="50">
+                                </textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Submit</button>
+                </form>
+            </div>
     </div>
-
-</div>
-</main>
-
-<footer>
-    <%- include('../partials/footer'); %>
-</footer>
-
+    <%- include('../partials/footer')-%>
+    </div>
 </body>
+<script>
+    window.onload = function () {
+        document.getElementById('contact').classList.add('active');
+    };
+</script>
+
 </html>

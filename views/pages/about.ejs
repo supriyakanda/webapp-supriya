@@ -1,38 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <%- include('../partials/head'); %>
-</head>
-<body class="container">
+<%- include('../partials/head')-%>
 
-<header>
-    <%- include('../partials/header'); %>
-</header>
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <%- include('../partials/header')-%>
+        <section id="contact">
+            <div class="container">
 
-<main>
-<div class="row">
-    <div class="col-sm-8">
-        <div class="jumbotron">
-            <h1>About Me:</h1>
-            <p>
-                I am Supriya Kanda, I have passion for Information Technology since my grade 12.I have 2 years of IT experience in Help desk and Manual Testing. Deep understanding of programming languages like C, Java, Python, SQL, and frame works of Selenium. Currently Enrolled in Software Engineering Technician Program to upgrade my skills and to be ready for the IT world.
-                My Interests include coding and drafting Project documents and Upgrading myself with news about latest technologies in the market
-                </p>
-        </div>
+                <h3 class="text-center text-uppercase">About Me</h3>
+
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="box text-center">
+
+                            <div class="info">
+                                <p>I am Supriya Kanda, I have passion for Information Technology since my grade 12.I
+                                    have 2 years of IT experience in Help desk and Manual Testing. Deep understanding of
+                                    programming languages like C, Java, Python, SQL, and frame works of Selenium.
+                                    Currently Enrolled in Software Engineering Technician Program to upgrade my skills
+                                    and to be ready for the IT world.</p>
+                                <p>
+                                    My Interests include coding and drafting Project documents and Upgrading myself with
+                                    news about latest technologies in the market.
+                                </p>
+                            </div>
+                            <div class="box-icon">
+                                <img class="aboutme-photo" src="images/my-photo.png" class="img-circle"
+                                    alt="Cinque Terre">
+
+
+                                <h6 class="text-center text-uppercase">Supriya Kanda</h6>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('../partials/footer')-%>
     </div>
-
-    <div class="col-sm-4">
-        <div class="well">
-            <h3>Look I'm A Sidebar!</h3>
-        </div>
-    </div>
-
-</div>
-</main>
-
-<footer>
-    <%- include('../partials/footer'); %>
-</footer>
-
 </body>
+<script>
+    window.onload = function () {
+        document.getElementById('about').classList.add('active');
+    };
+</script>
+
 </html>
