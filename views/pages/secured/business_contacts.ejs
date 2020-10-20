@@ -1,0 +1,52 @@
+<!--
+File name :app.js
+Student’s Name: Supriya Kanda
+Student ID :301166350
+ Date: 09-10-2020
+-->
+<%- include('../../partials/head')-%>
+
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <%- include('../../partials/header')-%>
+
+
+        <section id="contact">
+            <div class="container">
+                <h3 class="text-center text-uppercase">                                                          Hello There, Welcome!</h3>
+                <p class="text-center w-75 m-auto">                      Mission Statement</p>  
+                <p class="text-center w-75 m-auto">                  
+                       “Curiosity Leads to Questions, I work to find Solutions”</p>
+                <div class="row">
+                    <div class="col-sm-12 col-md-6 col-lg-6 my-5">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <h4 class="text-uppercase mb-5">More About Me</h4>
+                                <p class="lead">
+                                    <a href="/about" class="btn btn-lg btn-secondary">Click Here</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12 col-md-6 col-lg-6 my-5">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <h4 class="text-uppercase mb-5">My Accomplishments </h4>
+                                <p class="lead">
+                                    <a href="/projects" class="btn btn-lg btn-secondary">Click Here</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('../../partials/footer')-%>
+    </div>
+</body>
+<script>
+    window.onload = function() {
+        document.getElementById('home').classList.add('active');
+      };
+</script>
+</html>
