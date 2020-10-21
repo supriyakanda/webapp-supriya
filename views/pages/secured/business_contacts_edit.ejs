@@ -1,0 +1,50 @@
+<!--
+File name :app.js
+Student’s Name: Supriya Kanda
+Student ID :301166350
+ Date: 09-10-2020
+-->
+<%- include('../../partials/head')-%>
+
+<body>
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+        <%- include('../../partials/header')-%>
+
+
+        <section id="contact">
+            <form action="/secure/business_contacts/edit/<%= id %>" method="post" name="form1">
+                <table width="25%" border="0" id="countries">
+                    <tr>
+                        <td>Name</td>
+                        <td><input type="text" name="name" id="name" value="<%= name %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td><input type="text" name="tld" id="email" value="<%= email %>" /></td>
+                    </tr>
+                    <tr>
+                        <td>Contact Number</td>
+                        <td><input type="text" name="contact_number" id="contact_number"
+                                value="<%= contact_number %>" /></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><input type="submit" name="Submit" value="Update" /></td>
+                    </tr>
+                </table>
+                <input type="hidden" name="_method" value="PUT" />
+            </form>
+            <td>
+                <a class="nav-link" href="/secure/business_contacts">Cancel</a>
+            </td>
+            <td>
+                <form method="post" action="/secure/business_contacts/delete/<%= id %>" style="float:right">
+                    <input type="submit" name="delete" value='Delete'
+                        onClick="return confirm('Are you sure you want to delete?')" />
+                    <input type="hidden" name="_method" value="DELETE" />
+                </form>
+            </td>
+        </section>
+        <%- include('../../partials/footer')-%>
+    </div>
+</body>

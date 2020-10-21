@@ -28,6 +28,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use('/secure', express.static(path.join(__dirname, 'public')));
+app.use('/secure/business_contacts/edit/', express.static(path.join(__dirname, 'public')));
 
 
 // APPLY COOKIE SESSION MIDDLEWARE
@@ -38,6 +40,7 @@ app.use(cookieSession({
 }));
 
 
+// app.use('/',indexRouter)(app);
 require('./routes/routes')(app);
 
 // catch 404 and forward to error handler
@@ -57,5 +60,5 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
-
-module.exports = app;
+app.listen(4002, () => console.log("Server is Running...4000"));
+// module.exports = app;

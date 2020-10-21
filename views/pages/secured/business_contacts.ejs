@@ -12,41 +12,41 @@ Student ID :301166350
 
 
         <section id="contact">
-            <div class="container">
-                <h3 class="text-center text-uppercase">                                                          Hello There, Welcome!</h3>
-                <p class="text-center w-75 m-auto">                      Mission Statement</p>  
-                <p class="text-center w-75 m-auto">                  
-                       “Curiosity Leads to Questions, I work to find Solutions”</p>
-                <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6 my-5">
-                        <div class="card border-0">
-                            <div class="card-body text-center">
-                                <h4 class="text-uppercase mb-5">More About Me</h4>
-                                <p class="lead">
-                                    <a href="/about" class="btn btn-lg btn-secondary">Click Here</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 my-5">
-                        <div class="card border-0">
-                            <div class="card-body text-center">
-                                <h4 class="text-uppercase mb-5">My Accomplishments </h4>
-                                <p class="lead">
-                                    <a href="/projects" class="btn btn-lg btn-secondary">Click Here</a>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="card-body">
+                <a href="/logout" class="btn btn-danger">Logout</a>
             </div>
+            <table width="80%" border="0" id="countries">
+                <tr style='text-align:left; background-color:#CCC'>
+                    <!-- <th id="id">ID</th> -->
+                    <th id="name">Name</th>
+                    <th id="email">Email</th>
+                    <th id="contact_number">Contact Number</th>
+                    <th>Action</th>
+                </tr>
+                <% if (data) { %>
+                <% data.forEach(function(buss_contact){ %>
+                <tr>
+                    <!-- <td id="id"><%= buss_contact.id %></td> -->
+                    <td id="name"><%= buss_contact.name %></td>
+                    <td id="email"><%= buss_contact.email %></td>
+                    <td id="Contact Number"><%= buss_contact.contact_number %></td>
+                    <td>
+                        <div style="float:left">
+                            <a href='/secure/business_contacts/edit/<%= buss_contact.id %>'>Update</a> &nbsp;
+                            <form method="post" action="/secure/business_contacts/delete/<%= buss_contact.id %>"
+                                style="float:right">
+                                <input type="submit" name="delete" value='Delete'
+                                    onClick="return confirm('Are you sure you want to delete?')" />
+                                <input type="hidden" name="_method" value="DELETE" />
+                            </form>
+                        </div>
+                    </td>
+                </tr>
+                <% }) %>
+                <% } %>
+
+            </table>
         </section>
         <%- include('../../partials/footer')-%>
     </div>
 </body>
-<script>
-    window.onload = function() {
-        document.getElementById('home').classList.add('active');
-      };
-</script>
-</html>
