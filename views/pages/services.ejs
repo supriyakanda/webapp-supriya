@@ -1,4 +1,4 @@
-/<!--
+<!--
 File name :app.js
 Student’s Name: Supriya Kanda
 Student ID :301166350
@@ -8,12 +8,12 @@ Student ID :301166350
 
 <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <%- include('../partials/header')-%>
+        <%- include('../partials/header', {variant:'default'}); %>
         <section id="contact">
             <div class="container">
                 <h3 class="text-center text-uppercase">Services</h3>
                 <p class="text-center w-75 m-auto">
-                    </p>
+                </p>
 
                 <div class="row">
                     <div class="row">
@@ -22,13 +22,14 @@ Student ID :301166350
                                 <div class="box-content">
                                     <h4 class="tag-title">Web Development</h4>
                                     <hr />
-                                    <p class="disclosure">Write and develop code for an application using Java script,Java,Python
+                                    <p class="disclosure">Write and develop code for an application using Java
+                                        script,Java,Python
                                         Test the code for functionality using selenium web driver
                                         Allign application according to business goals
                                         JIRA
-                                        
-                                        
-                                        </p>
+
+
+                                    </p>
 
                                     <img class="serivices-pics" src="images/web-development.png" class="img-rounded"
                                         alt="Cinque Terre">
@@ -40,13 +41,13 @@ Student ID :301166350
                                 <div class="box-content">
                                     <h4 class="tag-title">Web Designing</h4>
                                     <hr />
-                                    <p class="disclosure">Design  pages using HTML,CSS
+                                    <p class="disclosure">Design pages using HTML,CSS
                                         Design pages in Wordpress
                                         Domain and Hosting setup
                                         Domain Email setup
-                                        
-                                        
-                                        </p>
+
+
+                                    </p>
 
                                     <img class="serivices-pics" src="images/web-design.png" class="img-rounded"
                                         alt="Cinque Terre">
@@ -58,12 +59,12 @@ Student ID :301166350
                                 <div class="box-content">
                                     <h4 class="tag-title">Mobile Application Testing</h4>
                                     <hr />
-                                    <p class="disclosure">Test your software for functionality 
+                                    <p class="disclosure">Test your software for functionality
                                         Automated testing using appium software
                                         Manual testing of the apps over different operating system
-                                        
-                                        
-                                        </p>
+
+
+                                    </p>
 
                                     <img class="serivices-pics" src="images/mobile-apps.png" class="img-rounded"
                                         alt="Cinque Terre">
@@ -71,17 +72,10 @@ Student ID :301166350
                             </div>
                         </div>
                     </div>
-                   
+
                 </div>
             </div>
         </section>
         <%- include('../partials/footer')-%>
     </div>
 </body>
-<script>
-    window.onload = function () {
-        document.getElementById('services').classList.add('active');
-    };
-</script>
-
-</html>

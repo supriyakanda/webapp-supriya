@@ -2,49 +2,62 @@
 File name :app.js
 Student’s Name: Supriya Kanda
 Student ID :301166350
- Date: 09-10-2020
+Date: 23-10-2020
 -->
-<%- include('../../partials/head')-%>
+<%- include('../../partials/head.ejs')-%>
+
 
 <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <%- include('../../partials/header')-%>
-
-
+        <%- include('../../partials/header.ejs', {variant:'secure'}); %>
         <section id="contact">
-            <form action="/secure/business_contacts/edit/<%= id %>" method="post" name="form1">
-                <table width="25%" border="0" id="countries">
-                    <tr>
-                        <td>Name</td>
-                        <td><input type="text" name="name" id="name" value="<%= name %>" /></td>
-                    </tr>
-                    <tr>
-                        <td>Email</td>
-                        <td><input type="text" name="tld" id="email" value="<%= email %>" /></td>
-                    </tr>
-                    <tr>
-                        <td>Contact Number</td>
-                        <td><input type="text" name="contact_number" id="contact_number"
-                                value="<%= contact_number %>" /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td><input type="submit" name="Submit" value="Update" /></td>
-                    </tr>
-                </table>
-                <input type="hidden" name="_method" value="PUT" />
-            </form>
-            <td>
-                <a class="nav-link" href="/secure/business_contacts">Cancel</a>
-            </td>
-            <td>
-                <form method="post" action="/secure/business_contacts/delete/<%= id %>" style="float:right">
-                    <input type="submit" name="delete" value='Delete'
-                        onClick="return confirm('Are you sure you want to delete?')" />
-                    <input type="hidden" name="_method" value="DELETE" />
-                </form>
-            </td>
+            <div class="container ">
+                <h3 class="text-center text-uppercase">Business Contacts update</h3>
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6 bg-light border rounded py-3">
+                        <form action="/secure/business_contacts/edit/<%= id %>" method="post">
+
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" name="name" id="name" value="<%= name %>"
+                                    placeholder="Name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" name="email" id="email" value="<%= email %>"
+                                    placeholder="Email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contact_number">Contact Number</label>
+                                <input type="text" class="form-control" name="contact_number" id="contact_number"
+                                    value="<%= contact_number %>" placeholder="Contact Number" required>
+                            </div>
+                            <input class="btn btn-outline-success my-2 my-sm-0" type="submit" name="Submit"
+                                value="Update" />
+                        </form>
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-sm-3"></div>
+                    <div class="col-sm-6 bg-light border rounded py-3">
+                        <a class="btn btn-outline-primary my-2 my-sm-0" href="/secure/business_contacts/list">Cancel</a>
+                        <form method="post" action="/secure/business_contacts/delete/<%= id %>" style="float:right">
+                            <input class="btn btn-outline-danger my-2 my-sm-0" type="submit" name="delete"
+                                value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
+                            <input class="btn btn-outline-danger my-2 my-sm-0" type="hidden" name="_method"
+                                value="DELETE" />
+                        </form>
+
+                    </div>
+                    <div class="col-sm-3"></div>
+                </div>
+            </div>
         </section>
+
         <%- include('../../partials/footer')-%>
     </div>
 </body>

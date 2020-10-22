@@ -3,33 +3,50 @@
   Student’s Name: Supriya Kanda
   Student ID :301166350
   Date: 09-10-2020
+  <%= typeof variant != 'undefined' ? variant : 'default' %>
 -->
-<nav class="navbar navbar-expand-lg navbar-light bg-light custom-nav">
-  <a class="navbar-brand" href="/">
-    <img class="logo" src="images/my-logo.png" alt="">
-  </a>
-  <ul class="navbar-nav mr-auto">
-    <li class="nav-item">
-      <a class="nav-link" href="/home">Home</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/about">About</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/projects">Projects</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/services">Services</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/contact">Contact</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="/login">Login</a>
-    </li>
-  </ul>
 
-  <!-- <div class="card-body">
-    <a href="/logout" class="btn btn-danger">Logout</a>
-  </div> -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light custom-nav">
+
+  <% if (variant == 'default') { %>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/home"><img class="logo" src="images/my-logo.png" alt=""></a>
+    </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="/home">Home</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/about">About</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/projects">Projects</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/services">Services</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/contact">Contact</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <a class="nav-link btn btn-outline-success my-2 my-sm-0" href="/login">Login</a>
+    </ul>
+  </div>
+  <%} else { %>
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/home"><img class="logo" src="images/my-logo.png" alt=""></a>
+    </div>
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="/secure/business_contacts/list">Business Contacts</a>
+      </li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <a class="btn btn-outline-danger my-2 my-sm-0" href="/logout">Logout</a>
+    </ul>
+  </div>
+  <% } %>
 </nav>

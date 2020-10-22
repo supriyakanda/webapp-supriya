@@ -13,9 +13,7 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var dbConnection = require('./database');
 var cookieSession = require('cookie-session');
-var indexRouter = require('./routes/routes');
 
 var app = express();
 
@@ -27,8 +25,12 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
 
+// serving the public folder
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/secure', express.static(path.join(__dirname, 'public')));
+app.use('/secure/business_contacts/list', express.static(path.join(__dirname, 'public')));
+app.use('/secure/business_contacts/edit', express.static(path.join(__dirname, 'public')));
 
 // APPLY COOKIE SESSION MIDDLEWARE
 app.use(cookieSession({

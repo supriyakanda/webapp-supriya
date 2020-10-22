@@ -8,7 +8,7 @@ Student ID :301166350
 
 <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <%- include('../partials/header')-%>
+        <%- include('../partials/header', {variant:'default'}); %>
         <section id="contact">
             <div class="container">
                 <h3 class="text-center text-uppercase">Contact Me</h3>
@@ -75,10 +75,3 @@ Student ID :301166350
     <%- include('../partials/footer')-%>
     </div>
 </body>
-<script>
-    window.onload = function () {
-        document.getElementById('contact').classList.add('active');
-    };
-</script>
-
-</html>

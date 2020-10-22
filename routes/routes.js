@@ -1,37 +1,39 @@
+var express = require('express');
+// var router = express.Router();
 var dbConnection = require('../database');
 const bcrypt = require('bcryptjs');
 const { body, validationResult } = require('express-validator');
 
-module.exports = function (app) {
+module.exports = function (router) {
 
 
 
-  app.get('/', (req, res) => {
+  router.get('/', (req, res) => {
     res.redirect('/home');
   });
 
   /* GET home page. */
-  app.get('/home', function (req, res) {
+  router.get('/home', function (req, res) {
     res.render('pages/home', { title: 'Express' });
   });
 
   /* GET about page. */
-  app.get('/about', function (req, res) {
+  router.get('/about', function (req, res) {
     res.render('pages/about');
   });
 
   /* GET contact page. */
-  app.get('/contact', function (req, res) {
+  router.get('/contact', function (req, res) {
     res.render('pages/contact');
   });
 
   /* GET projects page. */
-  app.get('/projects', function (req, res) {
+  router.get('/projects', function (req, res) {
     res.render('pages/projects');
   });
 
   /* GET services page. */
-  app.get('/services', function (req, res) {
+  router.get('/services', function (req, res) {
     res.render('pages/services');
   });
 
@@ -45,7 +47,7 @@ module.exports = function (app) {
 
   const ifLoggedin = (req, res, next) => {
     if (req.session.isLoggedIn) {
-      return res.redirect('/secure/business_contacts');
+      return res.redirect('/secure/business_contacts/list');
     }
     next();
   }
@@ -61,13 +63,11 @@ module.exports = function (app) {
     return 0;
   }
 
-
-
   /* GET services page. */
-  app.get('/secure/business_contacts', ifNotLoggedin, function (req, res) {
+  router.get('/secure/business_contacts/list', ifNotLoggedin, function (req, res) {
     dbConnection.execute("SELECT * FROM `bussiness_contacts`")
       .then(([rows]) => {
-        res.render('pages/secured/business_contacts', {
+        res.render('pages/secured/business_contacts.ejs', {
           title: 'All contacts',
           data: rows.sort(compare)
         });
@@ -75,7 +75,7 @@ module.exports = function (app) {
   });
 
   /* Edit services page. */
-  app.get('/secure/business_contacts/edit/(:id)', ifNotLoggedin, function (req, res) {
+  router.get('/secure/business_contacts/edit/(:id)', ifNotLoggedin, function (req, res) {
     dbConnection.execute('SELECT * FROM bussiness_contacts WHERE id = ' + req.params.id)
       .then(([rows]) => {
         res.render('pages/secured/business_contacts_edit', {
@@ -89,33 +89,25 @@ module.exports = function (app) {
   });
 
   /* Edit services page. */
-  app.put('/secure/business_contacts/edit/(:id)', ifNotLoggedin, function (req, res) {
-
-    var contact = {
-      name: req.body.name,
-      email: req.body.email,
-      contact_number: req.body.contact_number
-    };
-
-    dbConnection.execute('UPDATE t_countries SET ? WHERE id = ' + req.params.id, contact)
+  router.post('/secure/business_contacts/edit/(:id)', ifNotLoggedin, function (req, res) {
+    dbConnection.execute('UPDATE `bussiness_contacts` SET `name`=?,`email`=?,`contact_number`=? where `id`=?', [req.body.name, req.body.email, req.body.contact_number, req.params.id])
       .then(([rows]) => {
-        return res.redirect('/secure/business_contacts');
+        return res.redirect('/secure/business_contacts/list');
       });
   });
 
   /* DELETE services page. */
-  app.post('/secure/business_contacts/delete/(:id)', ifNotLoggedin, function (req, res) {
-    var contact = { id: req.params.id };
+  router.post('/secure/business_contacts/delete/(:id)', ifNotLoggedin, function (req, res) {
     dbConnection.execute('DELETE FROM bussiness_contacts WHERE id = ' + req.params.id, [req.params.id])
       .then(([rows]) => {
         console.log('deletee', rows)
-        return res.redirect('/secure/business_contacts');
+        return res.redirect('/secure/business_contacts/list');
       });
   });
 
 
   // ROOT PAGE
-  app.get('/secure/*', ifNotLoggedin, (req, res, next) => {
+  router.get('/secure/*', ifNotLoggedin, (req, res, next) => {
     dbConnection.execute("SELECT `name` FROM `users` WHERE `id`=?", [req.session.userID])
       .then(([rows]) => {
         res.render('/secure/business_contacts', {
@@ -125,12 +117,12 @@ module.exports = function (app) {
   });
   // END OF ROOT PAGE
 
-  app.get('/login', ifLoggedin, function (req, res) {
+  router.get('/login', ifLoggedin, function (req, res) {
     res.render('pages/login', { message: 'loginMessage' });
   });
 
   // LOGIN PAGE
-  app.post('/login', [
+  router.post('/login', [ // validation
     body('user_email').custom((value) => {
       return dbConnection.execute('SELECT `email` FROM `users` WHERE `email`=?', [value])
         .then(([rows]) => {
@@ -153,7 +145,7 @@ module.exports = function (app) {
             if (compare_result === true) {
               req.session.isLoggedIn = true;
               req.session.userID = rows[0].id;
-              res.redirect('/secure/business_contacts');
+              res.redirect('/secure/business_contacts/list');
             }
             else {
               res.render('pages/login', {
@@ -181,7 +173,7 @@ module.exports = function (app) {
   // END OF LOGIN PAGE
 
   // LOGOUT
-  app.get('/logout', (req, res) => {
+  router.get('/logout', (req, res) => {
     //session destroy
 
     req.session = null;
@@ -190,9 +182,9 @@ module.exports = function (app) {
   });
   // END OF LOGOUT
 
-  app.use('/secure', (req, res) => {
-    res.status(404).send('<h1>404 Page Not Found!</h1>');
-  });
+  // router.use('/secure', (req, res) => {
+  //   res.status(404).send('<h1>404 Page Not Found!</h1>');
+  // });
 
 
 }

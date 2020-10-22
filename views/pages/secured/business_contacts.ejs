@@ -2,50 +2,49 @@
 File name :app.js
 Student’s Name: Supriya Kanda
 Student ID :301166350
- Date: 09-10-2020
+Date: 23-10-2020
 -->
-<%- include('../../partials/head')-%>
+<%- include('../../partials/head.ejs')-%>
 
 <body>
     <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
-        <%- include('../../partials/header')-%>
-
-
+        <%- include('../../partials/header.ejs', {variant:'secure'}); %>
         <section id="contact">
-            <div class="card-body">
-                <a href="/logout" class="btn btn-danger">Logout</a>
+            <div class="container">
+                <h3 class="text-center text-uppercase">Business Contacts List</h3>
+                <table class="table table-hover" id="countries">
+                    <tr style='text-align:left; background-color:#CCC'>
+                        <th id="id">#</th>
+                        <th scope="col" id="name">Name</th>
+                        <th scope="col" id="email">Email</th>
+                        <th scope="col" id="contact_number">Contact Number</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                    <% if (data) { %>
+                    <% data.forEach(function(buss_contact,index,object){ %>
+                    <tr>
+                        <td id="id"><%= index + 1 %></td>
+                        <td id="name"><%= buss_contact.name  %></td>
+                        <td id="email"><%= buss_contact.email %></td>
+                        <td id="Contact Number"><%= buss_contact.contact_number %></td>
+                        <td>
+                            <div style="float:left">
+                                <a class="btn btn-outline-success my-2 my-sm-0"
+                                    href='/secure/business_contacts/edit/<%= buss_contact.id %>'>Update</a> &nbsp;
+                                <form method="post" action="/secure/business_contacts/delete/<%= buss_contact.id %>"
+                                    style="float:right">
+                                    <input class="btn btn-outline-danger my-2 my-sm-0" type="submit" name="delete"
+                                        value='Delete' onClick="return confirm('Are you sure you want to delete?')" />
+                                    <input class="btn btn-outline-success my-2 my-sm-0" type="hidden" name="_method"
+                                        value="DELETE" />
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                    <% }) %>
+                    <% } %>
+                </table>
             </div>
-            <table width="80%" border="0" id="countries">
-                <tr style='text-align:left; background-color:#CCC'>
-                    <!-- <th id="id">ID</th> -->
-                    <th id="name">Name</th>
-                    <th id="email">Email</th>
-                    <th id="contact_number">Contact Number</th>
-                    <th>Action</th>
-                </tr>
-                <% if (data) { %>
-                <% data.forEach(function(buss_contact){ %>
-                <tr>
-                    <!-- <td id="id"><%= buss_contact.id %></td> -->
-                    <td id="name"><%= buss_contact.name %></td>
-                    <td id="email"><%= buss_contact.email %></td>
-                    <td id="Contact Number"><%= buss_contact.contact_number %></td>
-                    <td>
-                        <div style="float:left">
-                            <a href='/secure/business_contacts/edit/<%= buss_contact.id %>'>Update</a> &nbsp;
-                            <form method="post" action="/secure/business_contacts/delete/<%= buss_contact.id %>"
-                                style="float:right">
-                                <input type="submit" name="delete" value='Delete'
-                                    onClick="return confirm('Are you sure you want to delete?')" />
-                                <input type="hidden" name="_method" value="DELETE" />
-                            </form>
-                        </div>
-                    </td>
-                </tr>
-                <% }) %>
-                <% } %>
-
-            </table>
         </section>
         <%- include('../../partials/footer')-%>
     </div>
